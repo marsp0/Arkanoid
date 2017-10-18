@@ -38,3 +38,7 @@ void Button::Render(sf::RenderWindow& l_window) {
     l_window.draw(m_background);
     l_window.draw(m_text);
 }
+
+sf::FloatRect Button::GetGlobalBounds() {
+    return m_background.getGlobalBounds();
+}

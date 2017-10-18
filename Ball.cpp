@@ -85,3 +85,7 @@ float Ball::top() {
 float Ball::bottom(){
     return y() + sf::CircleShape::getRadius();
 }
+
+void Ball::Restart() {
+    sf::CircleShape::setPosition(400.f,400.f);
+}

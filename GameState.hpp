@@ -11,7 +11,8 @@ public:
 
     void Update(sf::RenderWindow& l_window);
     void Render(sf::RenderWindow& l_window);
-    void HandleInput();
+    void HandleInput(sf::RenderWindow& l_window);
+    void Restart();
 private:
     Ball m_ball;
     Paddle m_paddle;

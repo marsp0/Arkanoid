@@ -13,6 +13,7 @@ public:
     float right();
     float top();
     float bottom();
+    void Restart();
 private:
     sf::Vector2f m_velocity;
     float m_paddleVelocity;

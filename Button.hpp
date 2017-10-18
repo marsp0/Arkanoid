@@ -11,6 +11,7 @@ public:
     ~Button();
     void Update(sf::RenderWindow& l_window);
     void Render(sf::RenderWindow& l_window);
+    sf::FloatRect GetGlobalBounds();
 private:
     sf::Text m_text;
     sf::Font m_font;
@@ -18,5 +19,4 @@ private:
     sf::RectangleShape m_background;
     sf::Color m_normalColor;
     sf::Color m_hoverColor;
-
 };

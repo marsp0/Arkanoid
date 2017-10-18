@@ -6,6 +6,8 @@ Game::Game() : m_window(sf::VideoMode(800,600,32), "Arkanoid", sf::Style::Titleb
     m_clock.restart();
     m_elapsed = 0.0f;
     m_window.setFramerateLimit(60);
+    m_window.setKeyRepeatEnabled(false);
+    currentState = &m_menu;
 }
 
 Game::~Game(){
@@ -13,17 +15,42 @@ Game::~Game(){
 }
 
 void Game::HandleInput(){
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape)) {
-        m_window.close();
+    sf::Event event;
+    while (m_window.pollEvent(event)){
+
+        if (sf::Event::EventType::Closed == event.type){
+            m_window.close();
+        } else if (event.type == sf::Event::EventType::KeyPressed){
+            if (event.key.code == sf::Keyboard::Key::Escape) {
+                ChangeState();
+            }
+        } else if (event.type == sf::Event::EventType::MouseButtonPressed) {
+            if (event.mouseButton.button == sf::Mouse::Button::Left) {
+                if (currentState == &m_menu){
+                    m_menu.m_pressed = true;
+                    m_menu.m_mousePosition = sf::Mouse::getPosition(*GetWindow());
+                }
+            }
+        }
+
     }
     // Call State Handle Input here
-    m_game.HandleInput();
+    currentState->HandleInput(*GetWindow());
 }
 
 void Game::Update() {
     // Call State Update Here 
-    m_game.Update(*GetWindow());
-    m_menu.Update(*GetWindow());
+    currentState->Update(*GetWindow());
+    if (currentState == &m_menu) {
+        if (m_menu.m_buttonPressed[0] == true) {
+            RestartGame();
+            ChangeState();
+            m_menu.m_buttonPressed[0] = false;
+        } else if (m_menu.m_buttonPressed[3] == true) {
+            m_window.close();
+            ChangeState();
+        }
+    }
 }
 
 void Game::RestartClock(){
@@ -32,8 +59,7 @@ void Game::RestartClock(){
 
 void Game::Render(){
     m_window.clear(sf::Color(150,207,234));
-    m_game.Render(*GetWindow());
-    m_menu.Render(*GetWindow());
+    currentState->Render(*GetWindow());
     m_window.display();
 }
 
@@ -53,4 +79,16 @@ void Game::Run(){
 
 sf::RenderWindow* Game::GetWindow() {
     return &m_window;
+}
+
+void Game::RestartGame() {
+    m_game.Restart();
+}
+
+void Game::ChangeState(){
+    if (currentState == &m_game){
+        currentState = &m_menu;
+    } else {
+        currentState = &m_game;
+    }
 }
