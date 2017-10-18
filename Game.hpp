@@ -1,8 +1,8 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "Ball.hpp"
-#include "Paddle.hpp"
+#include "GameState.hpp"
+#include "MenuState.hpp"
 
 class Game {
 public:
@@ -14,11 +14,11 @@ public:
     void Render();
     void Run();
     void RestartClock();
+    sf::RenderWindow* GetWindow();
 private:
     sf::RenderWindow m_window;
-    Ball m_ball;
     sf::Clock m_clock;
     double m_elapsed;
-    Paddle m_paddle;
-    std::vector<sf::RectangleShape> m_bricks;
+    GameState m_game;
+    MenuState m_menu;
 };

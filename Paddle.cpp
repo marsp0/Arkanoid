@@ -7,7 +7,9 @@ Paddle::Paddle() : sf::RectangleShape() {
     sf::RectangleShape::setPosition(50,575);
     sf::RectangleShape::setSize(sf::Vector2f(100,25));
     sf::RectangleShape::setOrigin(50,12.5f);
-    sf::RectangleShape::setFillColor(sf::Color::Red);
+    sf::RectangleShape::setFillColor(sf::Color(175, 55, 44));
+    sf::RectangleShape::setOutlineColor(sf::Color::Black);
+    sf::RectangleShape::setOutlineThickness(2.f);
 }
 
 Paddle::~Paddle(){

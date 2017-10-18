@@ -10,7 +10,7 @@ Ball::Ball(float radius, std::size_t pointCircle) : sf::CircleShape(radius, poin
     sf::CircleShape::setPosition(400.f,400.f);
     sf::CircleShape::setRadius(10.f);
     sf::CircleShape::setOrigin(10.f,10.f);
-    sf::CircleShape::setFillColor(sf::Color::Green);
+    sf::CircleShape::setFillColor(sf::Color(16, 64, 86));
 }
 
 Ball::~Ball() {
