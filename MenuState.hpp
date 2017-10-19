@@ -5,8 +5,6 @@
 
 enum class ButtonPressed {
     NewGame = 0,
-    SaveGame,
-    Options,
     Quit
 };
 
@@ -21,13 +19,11 @@ public:
 
     sf::Vector2i m_mousePosition;
     bool m_pressed;
-    bool m_buttonPressed[4];
+    bool m_buttonPressed[2];
 
 private:
     sf::RectangleShape m_background;
     Button m_buttonNewGame;
-    Button m_buttonSaveGame;
-    Button m_buttonOptions;
     Button m_buttonQuitGame;
     
 };

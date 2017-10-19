@@ -42,11 +42,11 @@ void Game::Update() {
     // Call State Update Here 
     currentState->Update(*GetWindow());
     if (currentState == &m_menu) {
-        if (m_menu.m_buttonPressed[0] == true) {
+        if (m_menu.m_buttonPressed[static_cast<int>(ButtonPressed::NewGame)] == true) {
             RestartGame();
             ChangeState();
             m_menu.m_buttonPressed[0] = false;
-        } else if (m_menu.m_buttonPressed[3] == true) {
+        } else if (m_menu.m_buttonPressed[static_cast<int>(ButtonPressed::Quit)] == true) {
             m_window.close();
             ChangeState();
         }

@@ -2,9 +2,9 @@
 #include "Paddle.hpp"
 
 Paddle::Paddle() : sf::RectangleShape() {
-    m_paddleVelocity = 7.0f;
+    m_paddleVelocity = 8.0f;
     m_velocity = {m_paddleVelocity,0};
-    sf::RectangleShape::setPosition(50,575);
+    sf::RectangleShape::setPosition(350,575);
     sf::RectangleShape::setSize(sf::Vector2f(100,25));
     sf::RectangleShape::setOrigin(50,12.5f);
     sf::RectangleShape::setFillColor(sf::Color(175, 55, 44));
@@ -46,5 +46,5 @@ float Paddle::bottom(){
 }
 
 void Paddle::Restart(){
-    sf::RectangleShape::setPosition(50,575);
+    sf::RectangleShape::setPosition(350,575);
 }

@@ -16,7 +16,10 @@ public:
     float top();
     float bottom();
     void Restart();
+
+    bool m_gameOver;
 private:
     sf::Vector2f m_velocity;
     float m_ballVelocity;
+    
 };

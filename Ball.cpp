@@ -5,6 +5,7 @@
 
 Ball::Ball(float radius, std::size_t pointCircle) : sf::CircleShape(radius, pointCircle) {
     
+    m_gameOver = false;
     m_ballVelocity = 6.0f;
     m_velocity = {-m_ballVelocity, -m_ballVelocity};
     sf::CircleShape::setPosition(400.f,400.f);
@@ -36,7 +37,8 @@ void Ball::Update(Paddle &l_paddle) {
         if (top() <= 0) {
             m_velocity.y = m_ballVelocity;
         } else if (bottom() >= 600){
-            m_velocity.y = -m_ballVelocity;
+            m_velocity.y = -abs(m_ballVelocity);
+            m_gameOver = true;
         }
     }
 }

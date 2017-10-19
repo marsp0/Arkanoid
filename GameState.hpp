@@ -17,4 +17,5 @@ private:
     Ball m_ball;
     Paddle m_paddle;
     std::vector<sf::RectangleShape> m_bricks;
+    bool m_gameOver;
 };

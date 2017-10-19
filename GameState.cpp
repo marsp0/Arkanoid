@@ -11,6 +11,10 @@ GameState::~GameState(){
 
 void GameState::Update(sf::RenderWindow& l_window){
     m_ball.Update(m_paddle);
+    if (m_ball.m_gameOver) {
+        Restart();
+        m_ball.m_gameOver = false;
+    }
     m_paddle.Update();
     for (int i=0; i < m_bricks.size() ; i++) {
         sf::FloatRect brick = m_bricks[i].getGlobalBounds();
@@ -42,7 +46,7 @@ void GameState::Restart(){
             rect.setPosition(j*65.f + 75 ,i*40.f + 50);
             rect.setFillColor(sf::Color(44, 176, 55));
             rect.setOutlineColor(sf::Color::Black);
-            rect.setOutlineThickness(2.f);
+            rect.setOutlineThickness(1.5f);
             m_bricks.push_back(rect);
         }
     }
